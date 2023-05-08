@@ -13,6 +13,7 @@ const display = () => {
   storeData.forEach((value) => {
     // Creating list of to-do
     const li = document.createElement('li');
+    li.className = 'flex';
     li.innerHTML = `
     <input class="checkbox" type="checkbox" ${value.completed ? 'checked' : ''}>
     <input class="text" type="text" value="${value.description}"/> 
@@ -31,22 +32,22 @@ const display = () => {
   const span = document.querySelectorAll('.text');
   span.forEach((btn, index) => {
     btn.addEventListener('keyup', () => {
-      const test = utils.retrieve();
-      test[index].description = btn.value;
-      utils.save(test);
+      const storeData = utils.retrieve();
+      storeData[index].description = btn.value;
+      utils.save(storeData);
     });
   });
 
   const checkbox = document.querySelectorAll('.checkbox');
   checkbox.forEach((btn, index) => {
     btn.addEventListener('change', () => {
-      const test = utils.retrieve();
+      const storeData = utils.retrieve();
       if (btn.checked === true) {
-        test[index].completed = completed(test);
+        storeData[index].completed = completed(storeData);
       } else {
-        test[index].completed = unCompleted(test);
+        storeData[index].completed = unCompleted(storeData);
       }
-      utils.save(test);
+      utils.save(storeData);
     });
   });
 };
