@@ -1,3 +1,4 @@
+import './style.css';
 import utils from './modules/utils.js';
 import { completed, unCompleted } from './modules/status.js';
 
